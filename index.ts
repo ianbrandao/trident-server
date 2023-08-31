@@ -2,11 +2,12 @@ const express = require('express');
 const http = require('http');
 const { EventSourcePolyfill } = require('event-source-polyfill');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
 const corsOptions = {
-  origin: ``, // Update with the correct origin
+  origin: `https://trident-beryl.vercel.app/`, // Update with the correct origin
 };
 
 app.use(express.json());
@@ -16,7 +17,7 @@ const clients: any[] = []; // Store connected clients
 const pauseClients: any[] = []; // Store connected clients for pause events
 
 // Create a single instance of EventSourcePolyfill for updates
-const eventSourceUpdates = new EventSourcePolyfill(`/admin-updates`);
+const eventSourceUpdates = new EventSourcePolyfill(`https://trident-server.vercel.app/admin-updates`);
 
 // Route for handling updates
 app.get('/admin-updates', (req: { on: (arg0: string, arg1: () => void) => void; }, res: { setHeader: (arg0: string, arg1: string) => void; }) => {
