@@ -6,20 +6,9 @@ require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
-const corsOptions = {
-};
 
 app.use(express.json());
-const allowedOrigins = ['https://trident-beryl.vercel.app'];
-app.use(cors({
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-}));
+app.use(cors());
 
 const clients: any[] = []; // Store connected clients
 const pauseClients: any[] = []; // Store connected clients for pause events
