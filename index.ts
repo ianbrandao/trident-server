@@ -61,7 +61,7 @@ app.get('/trigger-button', (req: { query: { text: any; }; }, res: { send: (arg0:
     clients.forEach(client => client.write(`data: ${text}\n\n`));
   }
 
-  res.send('Event triggered successfully');
+  res.send('Event triggered successfully dasdasdasasad');
 });
 
 server.listen(3001, () => {
