@@ -17,7 +17,7 @@ const pauseClients: any[] = []; // Store connected clients for pause events
 const eventSourceUpdates = new EventSourcePolyfill(`https://trident-server.vercel.app/admin-updates`);
 
 // Route for handling updates
-app.get('/admin-updates', (req: { on: (arg0: string, arg1: () => void) => void; }, res: { setHeader: (arg0: string, arg1: string) => void; }) => {
+app.get('https://trident-server.vercel.app/admin-updates', (req: { on: (arg0: string, arg1: () => void) => void; }, res: { setHeader: (arg0: string, arg1: string) => void; }) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
 
@@ -33,7 +33,7 @@ app.get('/admin-updates', (req: { on: (arg0: string, arg1: () => void) => void; 
 });
 
 // Route for handling pause events
-app.get('/pause', (req: { on: (arg0: string, arg1: () => void) => void; }, res: { setHeader: (arg0: string, arg1: string) => void; }) => {
+app.get('https://trident-server.vercel.app/pause', (req: { on: (arg0: string, arg1: () => void) => void; }, res: { setHeader: (arg0: string, arg1: string) => void; }) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
 
