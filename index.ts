@@ -19,6 +19,7 @@ const eventSourceUpdates = new EventSourcePolyfill(`https://trident-server.verce
 app.get('/admin-updates', (req: { on: (arg0: string, arg1: () => void) => void; }, res: { setHeader: (arg0: string, arg1: string) => void; }) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   clients.push(res);
 
@@ -35,6 +36,7 @@ app.get('/admin-updates', (req: { on: (arg0: string, arg1: () => void) => void; 
 app.get('/pause', (req: { on: (arg0: string, arg1: () => void) => void; }, res: { setHeader: (arg0: string, arg1: string) => void; }) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   pauseClients.push(res);
 
