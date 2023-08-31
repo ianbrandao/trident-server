@@ -14,7 +14,8 @@
     ],
     "headers": [
       {
-        "source": "/api/(.*)",
+        "source": "/(.*)",
+        "dest": "src/index.tsx",
         "headers": [
           { "key": "Access-Control-Allow-Credentials", "value": "true" },
           { "key": "Access-Control-Allow-Origin", "value": "*" },
