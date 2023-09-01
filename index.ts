@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-const { Client } = require('pg');
+const { Client } = require('pg'); // Import the PostgreSQL Client
 require('dotenv').config();
 
 const app = express();
@@ -10,13 +10,13 @@ const server = http.createServer(app);
 app.use(express.json());
 app.use(cors({
   origin: 'https://trident-sigma.vercel.app',
-  optionsSuccessStatus: 200 // Add your frontend's origin here
+  optionsSuccessStatus: 200
 }));
 
 // Route to trigger updates to connected clients
-app.post('/trigger-button', async (req, res) => {
+app.get('/trigger-button', async (req, res) => {
   try {
-    const newHashtag = req.body.text || ''; // Get the 'text' property from the request body
+    const newHashtag = req.query.text || '';
 
     // Connect to the PostgreSQL database
     const dbClient = new Client({
