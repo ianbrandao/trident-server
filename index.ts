@@ -8,7 +8,9 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://trident-sigma.vercel.app' // Add your frontend's origin here
+}));
 
 // Route to trigger updates to connected clients
 app.post('/trigger-button', async (req, res) => {
